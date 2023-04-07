@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
 export const register = createAsyncThunk(
   '/auth/register',
@@ -9,6 +9,17 @@ export const register = createAsyncThunk(
     try {
       const { data } = await axios.post('/users/signup', credentials);
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return error.message;
+    }
   }
 );
+
+export const logIn = createAsyncThunk('auth/login', async credentials => {
+  try {
+    const { data } = await axios.post('/users/login', credentials);
+    return data;
+  } catch (error) {
+    return error.message;
+  }
+});
