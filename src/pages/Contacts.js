@@ -1,4 +1,5 @@
 import { ContactEditor } from 'components/ContactEditor/ContactEditor';
+import { ContactList } from 'components/ContactList/ContactList';
 import { useSelector } from 'react-redux';
 import { selectLoading } from 'redux/contacts/selectors';
 
@@ -11,7 +12,7 @@ export default function Contacts() {
       <ContactEditor />
       <h2>Contacts</h2>
       <div>{isLoading && 'Request in progress...'}</div>
-      <div>Contact list</div>
+      <ContactList />
     </>
   );
 }
