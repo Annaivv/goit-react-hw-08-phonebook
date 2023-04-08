@@ -11,8 +11,7 @@ export default function Contacts() {
       <h1>Phonebook</h1>
       <ContactEditor />
       <h2>Contacts</h2>
-      <div>{isLoading && 'Request in progress...'}</div>
-      <ContactList />
+      {isLoading ? <div>'Request in progress...'</div> : <ContactList />}
     </>
   );
 }

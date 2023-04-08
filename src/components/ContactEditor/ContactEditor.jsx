@@ -7,23 +7,19 @@ import { selectAllContacts } from 'redux/contacts/selectors';
 export const ContactEditor = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const storedContacts = useSelector(selectAllContacts);
 
   const handleSubmit = evt => {
     evt.preventDefault();
+    const form = evt.currentTarget;
     const existingContact = storedContacts.filter(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
     existingContact.length
       ? alert(`${name} is already in contacts`)
-      : dispatch(addContact({ name, phone }));
-    reset();
-  };
-
-  const reset = () => {
-    setName('');
-    setPhone('');
+      : dispatch(addContact({ name, number }));
+    form.reset();
   };
 
   return (
@@ -33,7 +29,6 @@ export const ContactEditor = () => {
         <Input
           type="text"
           name="name"
-          value={name}
           onChange={evt => setName(evt.target.value)}
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -44,9 +39,8 @@ export const ContactEditor = () => {
         Phone
         <Input
           type="tel"
-          name="phone"
-          value={phone}
-          onChange={evt => setPhone(evt.target.value)}
+          name="number"
+          onChange={evt => setNumber(evt.target.value)}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

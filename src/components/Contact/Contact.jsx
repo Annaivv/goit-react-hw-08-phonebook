@@ -11,7 +11,7 @@ export const Contact = ({ contact }) => {
       <p>
         <span>{contact.name}</span>
         <span>: </span>
-        <span>{contact.phone.toString()}</span>
+        <span>{contact.number.toString()}</span>
       </p>
       <button type="button" onClick={handleDelete}>
         Delete
