@@ -5,6 +5,7 @@ import { AppBar } from './AppBar/AppBar';
 import Home from 'pages/Home';
 import Register from 'pages/Register';
 import Login from 'pages/Login';
+import Contacts from 'pages/Contacts';
 
 export const App = () => {
   return (
@@ -14,7 +15,7 @@ export const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/contacts" />
+        <Route path="/contacts" element={<Contacts />} />
       </Routes>
       <GlobalStyle />
     </Layout>
