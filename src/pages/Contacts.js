@@ -15,11 +15,10 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <>
+    <div style={{ padding: 16 }}>
       <ContactEditor />
-      <h2>Contacts</h2>
       <Filter />
       {isLoading ? <div>'Request in progress...'</div> : <ContactList />}
-    </>
+    </div>
   );
 }
