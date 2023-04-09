@@ -1,5 +1,6 @@
 import { ContactEditor } from 'components/ContactEditor/ContactEditor';
 import { ContactList } from 'components/ContactList/ContactList';
+import { Filter } from 'components/Filter/Filter';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
@@ -18,6 +19,7 @@ export default function Contacts() {
       <h1>Phonebook</h1>
       <ContactEditor />
       <h2>Contacts</h2>
+      <Filter />
       {isLoading ? <div>'Request in progress...'</div> : <ContactList />}
     </>
   );

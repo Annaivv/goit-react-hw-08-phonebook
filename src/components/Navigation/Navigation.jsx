@@ -1,14 +1,13 @@
 import { StyledLink } from './Navigation.styled';
-// import { useSelector } from 'react-redux';
-// import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { useAuth } from 'hooks';
 
 export const Navigation = () => {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const { isLoggedIn } = useAuth();
   return (
     <nav>
       <StyledLink to="/">Home</StyledLink>
 
-      <StyledLink to="/contacts">Contacts</StyledLink>
+      {isLoggedIn && <StyledLink to="/contacts">Contacts</StyledLink>}
     </nav>
   );
 };
