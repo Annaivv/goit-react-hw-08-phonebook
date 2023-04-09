@@ -1,13 +1,6 @@
 import { useSelector } from 'react-redux';
 import { selectFilteredContacts } from 'redux/contacts/selectors';
-import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Stack,
-  Typography,
-} from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -31,25 +24,5 @@ export const ContactList = () => {
         </Typography>
       ))}
     </Stack>
-    // <List
-    //   sx={{
-    //     width: '100%',
-    //     maxWidth: 400,
-    //     bgcolor: 'background.paper',
-    //     m: '0 auto',
-    //   }}
-    //   aria-label="contacts"
-    // >
-    //   {contacts.map(contact => (
-    //     <ListItem disablePadding key={contact.id}>
-    //       <ListItemButton
-    //         sx={{ display: 'flex', justifyContent: 'flex-start' }}
-    //       >
-    //         <ListItemText primary={contact.name} />
-    //         <ListItemText secondary={contact.number} />
-    //       </ListItemButton>
-    //     </ListItem>
-    //   ))}
-    // </List>
   );
 };
