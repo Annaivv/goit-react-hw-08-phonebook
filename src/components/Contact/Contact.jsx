@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { ContactBlock } from './Contact.styled';
 import { deleteContact } from 'redux/contacts/operations';
@@ -18,4 +19,8 @@ export const Contact = ({ contact }) => {
       </button>
     </ContactBlock>
   );
+};
+
+Contact.propTypes = {
+  contact: PropTypes.object.isRequired,
 };
