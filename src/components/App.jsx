@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
 import { Layout } from './Layout';
-import { AppBar } from './AppBar/AppBar';
+import { Appbar } from './AppBar/AppBar';
 import { useDispatch } from 'react-redux';
 import { useEffect, lazy, Suspense } from 'react';
 import { refreshUser } from 'redux/auth/operations';
@@ -21,7 +21,7 @@ export const App = () => {
 
   return (
     <Layout>
-      <AppBar />
+      <Appbar />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />

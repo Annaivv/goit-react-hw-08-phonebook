@@ -16,7 +16,6 @@ export default function Contacts() {
 
   return (
     <>
-      <h1>Phonebook</h1>
       <ContactEditor />
       <h2>Contacts</h2>
       <Filter />

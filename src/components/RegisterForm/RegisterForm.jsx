@@ -1,5 +1,14 @@
+import {
+  Box,
+  Button,
+  Container,
+  CssBaseline,
+  TextField,
+  ThemeProvider,
+  createTheme,
+} from '@mui/material';
+import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { FormLabel, Form } from './RegisterForm.styled';
 import { register } from 'redux/auth/operations';
 
 export const RegisterForm = () => {
@@ -18,21 +27,67 @@ export const RegisterForm = () => {
     form.reset();
   };
 
+  const theme = createTheme();
+
   return (
-    <Form onSubmit={handleSubmit} autoComplete="off">
-      <FormLabel>
-        Username
-        <input type="text" name="name" />
-      </FormLabel>
-      <FormLabel>
-        Email
-        <input type="email" name="email" />
-      </FormLabel>
-      <FormLabel>
-        Password
-        <input type="password" name="password" />
-      </FormLabel>
-      <button type="submit">Register</button>
-    </Form>
+    <ThemeProvider theme={theme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Username"
+              name="name"
+              autoComplete="username"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Register
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 };
