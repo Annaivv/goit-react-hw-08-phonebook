@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { selectFilteredContacts } from 'redux/contacts/selectors';
-import { Stack, Typography } from '@mui/material';
+import { Stack } from '@mui/material';
+import { Contact } from 'components/Contact/Contact';
 
 export const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
@@ -19,9 +20,7 @@ export const ContactList = () => {
       }}
     >
       {contacts.map(contact => (
-        <Typography variant="subtitle1" key={contact.id}>
-          {contact.name}: {contact.number}
-        </Typography>
+        <Contact contact={contact} />
       ))}
     </Stack>
   );
