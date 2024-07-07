@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Button,
   Container,
@@ -12,18 +13,26 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 
 export const RegisterForm = () => {
+  const [passwordError, setPasswordError] = React.useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
-    dispatch(
-      register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
+
+    if (form.elements.password.value.length < 7) {
+      setPasswordError(true);
+      return;
+    } else {
+      setPasswordError(false);
+      dispatch(
+        register({
+          name: form.elements.name.value,
+          email: form.elements.email.value,
+          password: form.elements.password.value,
+        })
+      );
+    }
     form.reset();
   };
 
@@ -77,6 +86,11 @@ export const RegisterForm = () => {
               id="password"
               autoComplete="current-password"
             />
+            {passwordError && (
+              <Alert variant="filled" severity="error">
+                Password should contain at least 7 characters
+              </Alert>
+            )}
             <Button
               type="submit"
               fullWidth
